@@ -1,34 +1,48 @@
-# 🚀 Proyecto: Desarrollo Full Stack con Flask, PostgreSQL y Angular
-
-## 📌 Descripción General
-Este proyecto tiene como objetivo **aprender y dominar el microframework Flask de Python** mediante la construcción de una aplicación completa, desde sus fundamentos hasta su integración en un entorno full stack moderno.
-
-Se desarrolla un sistema funcional que conecta un **backend en Flask**, una **base de datos PostgreSQL** y un **frontend en Angular**, permitiendo comprender el flujo completo de una aplicación web profesional.
+# Proyecto: Desarrollo de Aplicaciones Full Stack con Flask, PostgreSQL y Angular  
+# Project: Full Stack Application Development with Flask, PostgreSQL, and Angular  
 
 ---
 
-## 🎯 Objetivos
+## Descripción General | General Description
 
-- 🐍 Comprender los fundamentos de Flask desde cero  
-- ⚙️ Construir una API REST funcional  
-- 🗄️ Implementar la conexión con base de datos PostgreSQL  
-- 🔗 Integrar el backend con un frontend en Angular  
-- 🌐 Desarrollar una arquitectura full stack moderna  
+**ES:**  
+Este proyecto tiene como finalidad el desarrollo de competencias en el uso del microframework Flask de Python, abordando su implementación desde fundamentos hasta la construcción de una aplicación web completa. Se integra un backend basado en Flask con una base de datos PostgreSQL y un frontend desarrollado en Angular, permitiendo comprender el ciclo completo de desarrollo de aplicaciones web modernas.
 
----
-
-## 🧩 Tecnologías Utilizadas
-
-| Tecnología     | Descripción                          |
-|---------------|--------------------------------------|
-| 🐍 Python + Flask | Microframework para backend        |
-| 🗄️ PostgreSQL     | Sistema de gestión de base de datos |
-| 🅰️ Angular        | Framework para frontend             |
-| 🔌 REST API       | Comunicación entre cliente-servidor |
+**EN:**  
+This project aims to develop competencies in the use of the Flask microframework in Python, covering its implementation from fundamental concepts to the construction of a complete web application. It integrates a Flask-based backend with a PostgreSQL database and an Angular frontend, enabling a comprehensive understanding of the full lifecycle of modern web application development.
 
 ---
 
-## 🏗️ Arquitectura del Proyecto
+## Objetivos | Objectives
+
+**ES:**
+- Desarrollar habilidades en el uso de Flask desde nivel básico hasta intermedio  
+- Diseñar e implementar una API REST funcional  
+- Integrar bases de datos PostgreSQL en aplicaciones web  
+- Establecer comunicación entre backend y frontend  
+- Aplicar buenas prácticas en arquitectura full stack  
+
+**EN:**
+- Develop skills in Flask from basic to intermediate level  
+- Design and implement a functional REST API  
+- Integrate PostgreSQL databases into web applications  
+- Establish communication between backend and frontend  
+- Apply best practices in full stack architecture  
+
+---
+
+## Tecnologías Utilizadas | Technologies Used
+
+| Tecnología / Technology | Descripción / Description |
+|------------------------|--------------------------|
+| 🐍 Python + Flask       | Backend microframework   |
+| 🗄️ PostgreSQL           | Sistema de base de datos relacional / Relational database |
+| 🅰️ Angular              | Framework de frontend / Frontend framework |
+| 🔗 REST API             | Comunicación cliente-servidor / Client-server communication |
+
+---
+
+## Arquitectura del Proyecto | Project Architecture
 
 ```bash
 [ Angular Frontend ]
