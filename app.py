@@ -1,7 +1,10 @@
 import os
+
 from dotenv import load_dotenv
 from flask import Flask, jsonify
 from flask_sqlalchemy import SQLAlchemy
+
+from database import init_db
 
 # 1. CARGAR VARIABLES DE ENTRONO DESDE .env (PRIMERA LINEA DE PROTECCION)
 
@@ -12,25 +15,47 @@ app = Flask(__name__)
 # 2. CONSTRUCCION DIDADCTICA DE LA CONEXION CON POSTGRES
 
 DB_USER = os.getenv('DB_USER')
-DB_PASSWORD = os.getenv('DB_PASSWORD')
+DB_PASS = os.getenv('DB_PASSWORD')
 DB_HOST = os.getenv('DB_HOST')
 DB_PORT = os.getenv('DB_PORT')
 DB_NAME = os.getenv('DB_NAME')
 
+# CONSTRUIR UIR DE LA DATA BASE
+DATABASE_URI = f"postgresql://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+
 # LA RECETA DE LA URI PARA CONECTARSE
-SQLALCHEMY_DATABASE_URI = f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
-app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
+app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URI
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-# 3. INSTANCIA DE SQLALCHEMY (LA LLAVEMAESTRA)
-db = SQLAlchemy(app)
+# =========================================================
+# DEBUG (Puedes quitar luego)
+# =========================================================
+print("===================================")
+print("Conectando a PostgreSQL...")
+print(f"Base de datos: {DB_NAME}")
+print(f"Host: {DB_HOST}")
+print("===================================")
 
-@app.route("/")
-def test_connection():
+# 4. INICIALIZAR LA BASE DE DATOS
+init_db(app)
+
+@app.route('/')
+def home():
+
     return jsonify({
-        "status": "online",
-        "message": "Configuración de base de datos cargada correctamente",
-        "user_connected": DB_USER
+        "mensaje": "Sistema de Biblioteca funcionando correctamente",
+        "base_datos": DB_NAME,
+        "estado": "activo"
+    })
+
+# =========================================================
+# RUTA TEST
+# =========================================================
+@app.route('/health')
+def health():
+
+    return jsonify({
+        "status": "ok"
     })
 
 
