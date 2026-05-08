@@ -3,7 +3,7 @@ from database.models import Categoria, Libro
 
 def crear_libro(data):
 
-    if data['stock'] < 0:
+    if data['stock', 0] < 0:
         raise ValueError("El stock no puede ser negativo")
 
     libro = Libro(
