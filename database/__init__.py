@@ -13,6 +13,9 @@ def init_db(app):
 
         from .models import Usuario, Categoria, Libro, Prestamo, Cliente
 
+        #Elimitar todas las tablas de la base de datos
+        #db.drop_all()
+        # Crear las tablas vacias en la base de datos
         db.create_all()
 
         print("Tablas creadas con éxito") # DEBUG

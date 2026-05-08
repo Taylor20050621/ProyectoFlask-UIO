@@ -1,6 +1,7 @@
+#libro_routes.py
+
 from flask import Blueprint, jsonify, request
-from database.models import Categoria, Libro
-from database import db
+from services import libro_service
 
 #Creacion de un blueprint
 libros_bp = Blueprint('libros', __name__)
@@ -13,7 +14,7 @@ def crear_libro():
 
     data = request.get_json()
 
-    resultado = crear_libro(data)
+    resultado = libro_service.crear_libro(data)
 
     if resultado['exito']:
         return jsonify({

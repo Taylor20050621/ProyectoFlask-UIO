@@ -10,6 +10,7 @@ class Usuario(db.Model):
     email = db.Column(db.String(50), unique=True, nullable=False)
     contrasena = db.Column(db.String(50), nullable=False)
     rol = db.Column(db.String(50), nullable=False)
+    activo = db.Column(db.Boolean, nullable=False, default=True)
     
     #Relaciones con otras tablas
     libros_registrado = db.relationship('Libro', backref='bibliotecario', lazy=True)
@@ -101,6 +102,7 @@ class Prestamo(db.Model):
     fecha_devolucion = db.Column(db.Date, nullable=False)
     fecha_entrega = db.Column(db.Date, nullable=False)
     estado = db.Column(db.String(20), nullable=False)
+    multa = db.Column(db.Float, nullable=False, default=0.0)
     
     #Relaciones con otras tablas
     libro_id = db.Column(db.Integer, db.ForeignKey('libros.id'), nullable=False)
@@ -114,6 +116,7 @@ class Prestamo(db.Model):
             'fecha_devolucion': self.fecha_devolucion,
             'fecha_entrega': self.fecha_entrega,
             'estado': self.estado,
+            'multa': self.multa,
             'libro_id': self.libro_id,
             'cliente_id': self.cliente_id,
             'usuario_id': self.usuario_id
