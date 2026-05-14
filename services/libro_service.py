@@ -1,22 +1,39 @@
-from repositories.libro_repository import guardar_libro
-from database.models import Categoria, Libro
+#libro_service.py 
+
+from repositories import libro_repository
+from database.models import Libro
 
 def crear_libro(data):
 
-    if data['stock', 0] < 0:
-        raise ValueError("El stock no puede ser negativo")
+    try:
 
-    libro = Libro(
-        titulo=data['titulo'],
-        autor=data['autor'],
-        editorial=data['editorial'],
-        anio=data['anio'],
-        isbn=data['isbn'],
-        stock=data['stock'],
-        categoria_id=data['categoria_id'],
-        usuario_id=data['usuario_id']
-    )
+        if data.get('stock', 0) < 0:
+            return {
+                "exito": False,
+                "error": "El stock no puede ser negativo"
+            }
 
-    guardar_libro(libro)
+        nuevo_libro = Libro(
+            titulo=data['titulo'],
+            autor=data['autor'],
+            editorial=data['editorial'],
+            anio=data['anio'],
+            isbn=data['isbn'],
+            stock=data['stock'],
+            categoria_id=data['categoria_id'],
+            usuario_id=data['usuario_id']
+        )
 
-    return libro.to_dict()
+        libro_repository.guardar_libro(nuevo_libro)
+
+        return {
+            "exito": True,
+            "libro": nuevo_libro
+        }
+
+    except Exception as e:
+
+        return {
+            "exito": False,
+            "error": str(e)
+        }

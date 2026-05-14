@@ -5,6 +5,9 @@ from flask_sqlalchemy import SQLAlchemy
 
 from database import init_db
 
+#IMPORTAR LOS BLUEPRINTS
+from routes.libro_routes import libros_bp
+
 # 1. CARGAR VARIABLES DE ENTRONO DESDE .env (PRIMERA LINEA DE PROTECCION)
 
 load_dotenv()
@@ -38,12 +41,18 @@ print("===================================")
 # 4. INICIALIZAR LA BASE DE DATOS
 init_db(app)
 
+
+# 5. REGISTRAR LOS BLUEPRINTS
+
+app.register_blueprint(libros_bp)
+
+# 6. Rutasprincipales
+
 @app.route('/')
 def home():
 
     return jsonify({
         "mensaje": "Sistema de Biblioteca funcionando correctamente",
-        "base_datos": DB_NAME,
         "estado": "activo"
     })
 
